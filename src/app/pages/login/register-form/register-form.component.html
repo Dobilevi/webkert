@@ -1,0 +1,43 @@
+<mat-card [formGroup]="registerForm" (keyup.enter)="register()">
+  <mat-card-title>Regisztráció</mat-card-title>
+
+  <mat-card-content>
+    <ng-container formGroupName="userGroup">
+      <mat-form-field>
+        <mat-label>Felhasználónév</mat-label>
+        <input matInput formControlName="username" type="text" maxlength="50" required/>
+        <mat-error *ngIf="registerForm.get('userGroup')?.get('username')?.invalid">
+          {{getUsernameErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email" type="email" maxlength="50" required/>
+        <mat-error *ngIf="registerForm.get('userGroup')?.get('email')?.invalid">
+          {{getEmailErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <mat-form-field>
+      <mat-label>Jelszó</mat-label>
+      <input matInput formControlName="password" type="password" required/>
+      <mat-error *ngIf="registerForm.get('password')?.invalid">
+        {{getPasswordErrorMessage()}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Jelszó újra</mat-label>
+      <input matInput formControlName="rePassword" type="password" required/>
+      <mat-error *ngIf="registerForm.get('rePassword')?.invalid">
+        {{getRePasswordErrorMessage()}}
+      </mat-error>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-stroked-button color="primary" (click)="register()">Regisztráció</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,38 @@
+<div>
+  <mat-card [formGroup]="surveyGroup" (keydown.enter)="submit()">
+    <mat-card-title>Technológia használat</mat-card-title>
+
+    <mat-card-content>
+      Egy napon átlagosan hány órán keresztül használ...
+      <mat-form-field>
+        <mat-label>...telefont?</mat-label>
+        <input matInput formControlName="phone" type="number" min="0" max="24" required/>
+        <mat-error *ngIf="surveyGroup.get('phone')?.invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>...számítógépet?</mat-label>
+        <input matInput formControlName="pc" type="number" min="0" max="24" required/>
+        <mat-error *ngIf="surveyGroup.get('pc')?.invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>...tévét?</mat-label>
+        <input matInput formControlName="tv" type="number" min="0" max="24" required/>
+        <mat-error *ngIf="surveyGroup.get('tv')?.invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button *ngIf="!loaded" mat-raised-button color="primary" (click)="submit()">Küldés</button>
+      <button *ngIf="loaded" mat-raised-button color="primary" (click)="modify()">Módosítás</button>
+      <button *ngIf="loaded" mat-raised-button color="accent" (click)="delete()">Törlés</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

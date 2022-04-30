@@ -1,0 +1,12 @@
+<h2>Kérdőívek</h2>
+
+<div>
+  <mat-card *ngFor="let survey of surveyObjects" [routerLink]="survey['id']" [ngClass]="(surveyData.includes(survey.id)) ? ('filled') : ('not-filled')">
+    <mat-card-title>{{survey.name}}</mat-card-title>
+
+    <mat-card-content>
+      Kitöltések száma: {{fills.get(survey.id)}}<br/>
+      {{(loggedIn) ? ('Állapot: ' + ((surveyData.includes(survey.id)) ? ('Kitöltve') : ('Nincs kitöltve'))) : ('')}}
+    </mat-card-content>
+  </mat-card>
+</div>

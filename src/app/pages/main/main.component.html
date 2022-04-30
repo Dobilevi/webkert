@@ -1,0 +1,17 @@
+<div>
+  <mat-card *ngIf="!loggedInUser" routerLink="/login">
+    <mat-card-title>Belépés</mat-card-title>
+  </mat-card>
+
+  <mat-card *ngIf="!loggedInUser" routerLink="/login">
+    <mat-card-title>Regisztráció</mat-card-title>
+  </mat-card>
+
+  <mat-card *ngIf="loggedInUser" routerLink="/user">
+    <mat-card-title>Fiók</mat-card-title>
+  </mat-card>
+
+  <mat-card routerLink="/surveys">
+    <mat-card-title>Kérdőívek</mat-card-title>
+  </mat-card>
+</div>

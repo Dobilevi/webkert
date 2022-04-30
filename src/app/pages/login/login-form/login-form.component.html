@@ -1,0 +1,26 @@
+<mat-card [formGroup]="loginForm" (keyup.enter)="login()">
+  <mat-card-title>Belépés</mat-card-title>
+  <mat-card-content>
+    <ng-container formGroupName="userGroup">
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email" type="email" maxlength="50" required/>
+        <mat-error *ngIf="loginForm.get('userGroup')?.get('email')?.invalid">
+          {{getEmailErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <mat-form-field>
+      <mat-label>Jelszó</mat-label>
+      <input matInput formControlName="password" type="password" required/>
+      <mat-error *ngIf="loginForm.get('password')?.invalid">
+        {{getPasswordErrorMessage()}}
+      </mat-error>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-stroked-button color="primary" (click)="login()">Belépés</button>
+  </mat-card-actions>
+</mat-card>

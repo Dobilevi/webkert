@@ -1,0 +1,13 @@
+<footer>
+  <h2>Navigáció</h2>
+
+  <mat-form-field appearance="fill">
+    <mat-select [(ngModel)]="currentPage"  (selectionChange)="menuSwitch()">
+      <mat-option [value]="'main'">Főoldal</mat-option>
+      <mat-option [value]="'surveys'">Kérdőívek</mat-option>
+      <mat-option *ngIf="!loggedInUser" [value]="'login'">Belépés / Regisztráció</mat-option>
+      <mat-option *ngIf="loggedInUser" [value]="'user'">Fiók</mat-option>
+      <mat-option *ngIf="loggedInUser" (click)="logout()" [value]="'login'">Kilépés</mat-option>
+    </mat-select>
+  </mat-form-field>
+</footer>

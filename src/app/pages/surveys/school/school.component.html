@@ -1,0 +1,41 @@
+<div>
+  <mat-card [formGroup]="surveyGroup" (keydown.enter)="submit()">
+    <mat-card-title>Tanulmányok</mat-card-title>
+
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Legmagasabb iskolai végzettség</mat-label>
+        <mat-select formControlName="highest" required>
+          <mat-option [value]="'nothing'">Semmi</mat-option>
+          <mat-option [value]="'8-primary'">8 általános</mat-option>
+          <mat-option [value]="'graduation'">Érettségi bizonyítvány</mat-option>
+          <mat-option [value]="'diploma'">Diploma</mat-option>
+        </mat-select>
+        <mat-error *ngIf="surveyGroup.get('highest')?.invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Általános iskola neve</mat-label>
+        <input matInput formControlName="primary" type="text"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Középiskola / gimnázium neve</mat-label>
+        <input matInput formControlName="secondary" type="text"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Felsőoktatási intézmény neve</mat-label>
+        <input matInput formControlName="university" type="text"/>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button *ngIf="!loaded" mat-raised-button color="primary" (click)="submit()">Küldés</button>
+      <button *ngIf="loaded" mat-raised-button color="primary" (click)="modify()">Módosítás</button>
+      <button *ngIf="loaded" mat-raised-button color="accent" (click)="delete()">Törlés</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

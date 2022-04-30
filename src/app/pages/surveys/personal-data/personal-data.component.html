@@ -1,0 +1,64 @@
+<div>
+<mat-card [formGroup]="surveyGroup" (keydown.enter)="submit()">
+  <mat-card-title>Személyes adatok</mat-card-title>
+
+  <mat-card-content>
+    <ng-container formGroupName="nameGroup">
+      <mat-form-field>
+        <mat-label>Vezetéknév</mat-label>
+        <input matInput formControlName="lastName" type="text" required/>
+        <mat-error *ngIf="surveyGroup.get('nameGroup')?.get('lastName')?.invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Keresztnév</mat-label>
+        <input matInput formControlName="firstName" type="text" required/>
+        <mat-error *ngIf="surveyGroup.get('nameGroup')?.get('firstName')?.invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <mat-form-field>
+      <mat-label>Nem</mat-label>
+        <mat-select formControlName="gender" required>
+          <mat-option [value]="'male'">Férfi</mat-option>
+          <mat-option [value]="'female'">Nő</mat-option>
+          <mat-option [value]="'other'">Egyéb</mat-option>
+        </mat-select>
+        <mat-error *ngIf="surveyGroup.get('userGroup')?.invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+    </mat-form-field>
+
+    <ng-container formGroupName="birthGroup">
+      <mat-form-field>
+        <mat-label>Születés dátuma</mat-label>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <input matInput formControlName="dateOfBirth" [matDatepicker]="$any(picker)" [max]="today" required/>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="surveyGroup.get('birthGroup')?.get('dateOfBirth')?.invalid">
+          {{getErrorMessage()}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Születés helye</mat-label>
+        <input matInput formControlName="placeOfBirth" type="text" required/>
+      </mat-form-field>
+      <mat-error *ngIf="surveyGroup.get('birthGroup')?.get('placeOfBirth')?.invalid">
+        {{getErrorMessage()}}
+      </mat-error>
+    </ng-container>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button *ngIf="!loaded" mat-raised-button color="primary" (click)="submit()">Küldés</button>
+    <button *ngIf="loaded" mat-raised-button color="primary" (click)="modify()">Módosítás</button>
+    <button *ngIf="loaded" mat-raised-button color="accent" (click)="delete()">Törlés</button>
+  </mat-card-actions>
+</mat-card>
+</div>

@@ -1,0 +1,31 @@
+<mat-nav-list>
+  <a mat-list-item routerLink="/main" (click)="close()">
+    <mat-icon>home</mat-icon>
+    <span>Főoldal</span>
+  </a>
+
+  <a mat-list-item routerLink="/surveys" (click)="close()">
+    <mat-icon>description</mat-icon>
+    <span>Kérdőívek</span>
+  </a>
+
+  <a *ngIf="!loggedInUser" mat-list-item routerLink="/login" (click)="close()">
+    <mat-icon>login</mat-icon>
+    <span>Belépés</span>
+  </a>
+
+  <a *ngIf="!loggedInUser" mat-list-item routerLink="/login" (click)="close()">
+    <mat-icon>person_add_alt</mat-icon>
+    <span>Regisztráció</span>
+  </a>
+
+  <a *ngIf="loggedInUser" mat-list-item routerLink="/user" (click)="close()">
+    <mat-icon>account_circle</mat-icon>
+    <span>Fiók</span>
+  </a>
+
+  <a *ngIf="loggedInUser" mat-list-item routerLink="/main" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Kilépés</span>
+  </a>
+</mat-nav-list>

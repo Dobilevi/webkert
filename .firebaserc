@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webfejl-kotprog-2022": {
+      "hosting": {
+        "kotprog": [
+          "webfejl-kotprog-2022"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webfejl-kotprog-2022"
+  }
+}

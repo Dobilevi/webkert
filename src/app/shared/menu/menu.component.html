@@ -1,0 +1,8 @@
+  <ul fxLayout fxLayoutGap="15px">
+    <li><a [routerLink]="'/main'">Főoldal</a></li>
+    <li><a [routerLink]="'/surveys'">Kérdőívek</a></li>
+    <li *ngIf="!loggedInUser" ><a [routerLink]="'/login'">Belépés</a></li>
+    <li *ngIf="!loggedInUser" ><a [routerLink]="'/login'">Regisztráció</a></li>
+    <li *ngIf="loggedInUser"><a [routerLink]="'/user'">Fiók</a></li>
+    <li *ngIf="loggedInUser"><a [routerLink]="'/login'" (click)="logout()">Kilépés</a></li>
+  </ul>
