@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+html{
+  font-family: ;
+}
+*/
+body, html{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:link, a:visited, a:active{
+  color: initial;
+}
+
+.border{
+  border: aquamarine solid 2px;
+  border-radius: 5px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,24 @@
+main{
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+mat-toolbar{
+  height: 100px;
+  position: fixed;
+  z-index: 1;
+}
+
+.content{
+  min-height: 100vh;
+  position: relative;
+}
+
+main{
+  padding-bottom: 300px;
+}
+
+h1{
+  color: white;
+  font-size: 35px;
+}
